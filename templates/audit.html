@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/auditCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+  </div>
+</div>
+<br>
+<div class="content">
+    {% for link in output %}
+    {{ link }}<br>
+    {% endfor %}
+    <br>
+    <form id="view" method="POST" action="/exit-view">
+        <input type="submit" value="Exit">
+    </form>
+</div>
+</body>
+</html>

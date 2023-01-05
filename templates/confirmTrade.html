@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/tradeCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name - Trade Headquarters</h1>
+  </div>
+  <div class="right">
+    <p>Welcome {{ fName }} {{ lName }} Balance: ${{ balance }}</p>
+  </div>
+</div>
+<br>
+<form action="/sendTrade" method="POST">
+    <label>Enter the amount you want to send:</label>
+    <input type="text" id="tradeAmount" name="tradeAmount" required>
+    <br>
+    <input type="submit" value="Confirm Trade">
+</form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/centralHomeCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+    <p>{{ fName }} {{ lName }}</p>
+  </div>
+</div>
+<br>
+<form id="centralTrans" method="POST" action="/centralTransaction">
+  <label for="docs">
+    <input type="radio" id="docs" name="central_tran_type" value="D" onchange="submitForm()">
+    <img src="../static/images/decrypt.png" alt="Decrypt Docs" style="cursor: pointer;">
+    <h2>Decrypt Docs</h2>
+  </label>
+  <label for="viewAccount">
+    <input type="radio" id="viewAccount" name="central_tran_type" value="V" onchange="submitForm()">
+    <img src="../static/images/account.png" alt="View Account" style="cursor: pointer;">
+    <h2>View Account</h2>
+  </label>
+  <label for="addAccount">
+    <input type="radio" id="addAccount" name="central_tran_type" value="Z" onchange="submitForm()">
+    <img src="../static/images/addAccount.png" alt="Add Account" style="cursor: pointer;">
+    <h2>Add Account</h2>
+  </label>
+  <label for="auditChain">
+    <input type="radio" id="auditChain" name="central_tran_type" value="A" onchange="submitForm()">
+    <img src="../static/images/audit.png" alt="Add Account" style="cursor: pointer;">
+    <h2>Audit Chain</h2>
+  </label>
+</form>
+<script>
+    function submitForm() {
+        document.getElementById('centralTrans').submit()
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/decryptCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+    <p>Decryption Headquarters</p>
+  </div>
+</div>
+<br>
+<form id="docType" method="POST" action="/docType">
+  <label for="accountChain">
+    <input type="radio" id="accountChain" name="doc_type" value="account" onchange="submitForm()">
+    <img src="../static/images/balances.png" alt="Account Chain" style="cursor: pointer;">
+      <h2>Account Chain</h2>
+  </label>
+  <label for="transactionChain">
+    <input type="radio" id="transactionChain" name="doc_type" value="transaction" onchange="submitForm()">
+    <img src="../static/images/transactions.png" alt="Transaction Chain" style="cursor: pointer;">
+      <h2>Transaction Chain</h2>
+  </label>
+  <label for="key">
+    <input type="radio" id="key" name="doc_type" value="key" onchange="submitForm()">
+    <img src="../static/images/key.png" alt="Key" style="cursor: pointer;">
+      <h2>Key</h2>
+  </label>
+</form>
+<script>
+    function submitForm() {
+        document.getElementById('docType').submit()
+    }
+</script>
+</body>
+</html>

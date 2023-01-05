@@ -1,0 +1,28 @@
+body {
+  background-color: lightBlue;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  background-color: #ddd;
+  height: 80px;
+  padding: 10px;
+}
+
+.banner .left {
+    flex: 0 0 210px;
+    text-align: left;
+}
+.banner .center {
+    flex: 1;
+    text-align: center;
+}
+.banner .right {
+    flex: 0 0 210px;
+    text-align: right;
+}
+
+.banner img {
+  height: 100px;
+}

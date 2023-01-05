@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/viewCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+    <p>Welcome {{ fName }} {{ lName }} Balance: ${{ balance }}</p>
+  </div>
+</div>
+<br>
+<table>
+  <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Partner</th>
+      <th>Amount</th>
+  </tr>
+  {% for i in range(list1|length) %}
+  <tr>
+      <td>{{ list1[i] }}</td>
+      <td>{{ list2[i] }}</td>
+      <td>{{ list3[i] }}</td>
+      <td>{{ list4[i] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<form id="view" method="POST" action="/exitView">
+    <input type="submit" value="Exit">
+</form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/homeCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+    <p>Welcome {{ fName }} {{ lName }} Balance: ${{ balance }}</p>
+  </div>
+</div>
+<form id="trans" method="POST" action="/transaction">
+  <label for="trade">
+    <input type="radio" id="trade" name="tran_type" value="T" onchange="submitForm()">
+    <img src="../static/images/tradeImage.png" alt="Trade Funds" style="cursor: pointer;">
+      <h2>Trade Funds</h2>
+  </label>
+  <label for="view">
+    <input type="radio" id="view" name="tran_type" value="V" onchange="submitForm()">
+    <img src="../static/images/account.png" alt="View Account" style="cursor: pointer;">
+      <h2>View Account</h2>
+  </label>
+  <label for="audit">
+    <input type="radio" id="audit" name="tran_type" value="A" onchange="submitForm()">
+    <img src="../static/images/audit.png" alt="Audit Chain" style="cursor: pointer;">
+      <h2>Audit Chain</h2>
+  </label>
+</form>
+<script>
+    function submitForm() {
+        document.getElementById('trans').submit()
+    }
+</script>
+</body>
+</html>

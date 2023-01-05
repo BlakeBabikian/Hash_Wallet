@@ -1,0 +1,20 @@
+#centralTrans label {
+  display: inline-block;
+  text-align: center;
+}
+
+#centralTrans img {
+  width: 200px;
+  height: 200px;
+  padding: 15px;
+}
+
+#centralTrans input[type="radio"] {
+  display: none;
+}
+
+#centralTrans {
+  display: flex;
+  margin: 0 auto;
+  width: 900px;
+}

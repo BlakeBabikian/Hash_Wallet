@@ -1,0 +1,25 @@
+#docType label {
+  display: inline-block;
+  text-align: center;
+}
+
+#docType img {
+  width: 200px;
+  height: 200px;
+  padding: 15px;
+}
+
+#docType input[type="radio"] {
+  display: none;
+}
+
+#docType {
+  display: flex;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.content {
+  margin: auto;
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/loginCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+  </div>
+</div>
+<br>
+<form action="/confirmCB" method="POST">
+    <label>Enter the first 8 digits of the latest key:</label>
+    <input type="text" id="key" name="key" required>
+    <br>
+    <input type="submit" value="Confirm Login">
+</form>
+</body>
+</html>

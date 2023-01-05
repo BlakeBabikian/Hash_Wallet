@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/loginCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+
+  </div>
+</div>
+<br>
+<h2>Login Form:</h2>
+<form action="/home" method="POST">
+    <label>Enter your pin:</label>
+    <input type="text" id="user_id_num" name="user_id_num" required>
+    <br>
+    <label>Enter your first name:</label>
+    <input type="text" id="user_first_name" name="user_first_name" required>
+    <br>
+    <label>Enter your last name:</label>
+    <input type="text" id="user_last_name" name="user_last_name" required>
+    <br>
+    <label>Enter your password:</label>
+    <input type="password" id="user_password" name="user_password" required>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

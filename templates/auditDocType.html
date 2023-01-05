@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/generalStyling.css">
+    <link rel="stylesheet" href="../static/css/auditCSS.css">
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <img src="../static/images/logo.png" alt="Logo">
+  </div>
+  <div class="center">
+      <h1>Bank Name</h1>
+  </div>
+  <div class="right">
+    <p>Auditing Headquarters</p>
+  </div>
+</div>
+<br>
+<form id="docType" method="POST" action="/auditDocType">
+  <label for="accountChain">
+    <input type="radio" id="accountChain" name="audit_doc_type" value="balances" onchange="submitForm()">
+    <img src="../static/images/balances.png" alt="Account Chain" style="cursor: pointer;">
+      <h2>Balances</h2>
+  </label>
+  <label for="transactionChain">
+    <input type="radio" id="transactionChain" name="audit_doc_type" value="transactions" onchange="submitForm()">
+    <img src="../static/images/transactions.png" alt="Transaction Chain" style="cursor: pointer;">
+      <h2>Transactions</h2>
+  </label>
+</form>
+<script>
+    function submitForm() {
+        document.getElementById('docType').submit()
+    }
+</script>
+</body>
+</html>
