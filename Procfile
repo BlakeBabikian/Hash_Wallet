@@ -1,1 +1,1 @@
-web: FLASK_APP=myapp.py FLASK_ENV=development flask run --port=$PORT
+web: python-3.11 -m flask run --app=app:app --port=$PORT
