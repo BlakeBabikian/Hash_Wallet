@@ -35,5 +35,15 @@
     <br>
     <input type="submit" value="Submit">
 </form>
+<form method="GET">
+    <a href="/newUser">No Account, Create One!</a>
+</form>
+<div id="flash-message"></div>
+<script>
+    let flashMessage = "{{ get_flashed_messages()|safe }}"
+    if(flashMessage !== "[]") {
+        alert(flashMessage)
+    }
+</script>
 </body>
 </html>

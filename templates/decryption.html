@@ -20,21 +20,26 @@
 </div>
 <br>
 <form id="docType" method="POST" action="/docType">
-  <label for="accountChain">
-    <input type="radio" id="accountChain" name="doc_type" value="account" onchange="submitForm()">
-    <img src="../static/images/balances.png" alt="Account Chain" style="cursor: pointer;">
-      <h2>Account Chain</h2>
-  </label>
-  <label for="transactionChain">
-    <input type="radio" id="transactionChain" name="doc_type" value="transaction" onchange="submitForm()">
-    <img src="../static/images/transactions.png" alt="Transaction Chain" style="cursor: pointer;">
-      <h2>Transaction Chain</h2>
-  </label>
-  <label for="key">
-    <input type="radio" id="key" name="doc_type" value="key" onchange="submitForm()">
-    <img src="../static/images/key.png" alt="Key" style="cursor: pointer;">
-      <h2>Key</h2>
-  </label>
+    <label for="accountChain">
+        <input type="radio" id="accountChain" name="doc_type" value="account" onchange="submitForm()">
+        <img src="../static/images/balances.png" alt="Account Chain" style="cursor: pointer;">
+          <h2>Account Chain</h2>
+    </label>
+    <label for="transactionChain">
+        <input type="radio" id="transactionChain" name="doc_type" value="transaction" onchange="submitForm()">
+        <img src="../static/images/transactions.png" alt="Transaction Chain" style="cursor: pointer;">
+          <h2>Transaction Chain</h2>
+    </label>
+    <label for="key">
+        <input type="radio" id="key" name="doc_type" value="key" onchange="submitForm()">
+        <img src="../static/images/key.png" alt="Key" style="cursor: pointer;">
+          <h2>Key</h2>
+    </label>
+    <label for="depositChain">
+        <input type="radio" id="depositChain" name="doc_type" value="deposit" onchange="submitForm()">
+        <img src="../static/images/balances.png" alt="Deposit Chain" style="cursor: pointer;">
+          <h2>Deposit Chain</h2>
+    </label>
 </form>
 <script>
     function submitForm() {

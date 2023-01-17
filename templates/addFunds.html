@@ -9,7 +9,11 @@
 <body>
 <div class="banner">
   <div class="left">
-    <img src="../static/images/logo.png" alt="Logo">
+    <form id="view" method="POST" action="/exitView">
+        <button type="submit" class="logo-button">
+            <img src="../static/images/logo.png" alt="Logo">
+        </button>
+    </form>
   </div>
   <div class="center">
       <h1>Bank Name</h1>
@@ -18,12 +22,18 @@
   </div>
 </div>
 <br>
-<h1>Account created for {{fName}} {{lName}} ID num {{idNum}}</h1>
 <form action="/addFunds" method="POST">
     <label for="accountAmount">Enter the amount you want in your account:</label>
     <input type="text" id="accountAmount" name="accountAmount" required>
     <br>
     <input type="submit" value="Confirm Amount">
 </form>
+<div id="flash-message"></div>
+<script>
+    let flashMessage = "{{ get_flashed_messages()|safe }}"
+    if(flashMessage !== "[]") {
+        alert(flashMessage)
+    }
+</script>
 </body>
 </html>

@@ -25,5 +25,12 @@
     <br>
     <input type="submit" value="Confirm Trade">
 </form>
+<div id="flash-message"></div>
+<script>
+    let flashMessage = "{{ get_flashed_messages()|safe }}"
+    if(flashMessage !== "[]") {
+        alert(flashMessage)
+    }
+</script>
 </body>
 </html>

@@ -8,7 +8,7 @@ money_supply = 1000000000000
 
 
 def load_account(account_num):
-    accounts = encrypt.decrypt_file('chain.csv')
+    accounts = encrypt.decrypt_file('AccountChain.csv')
     account = accounts.get(account_num)
     return account
 
@@ -40,7 +40,7 @@ def audit_transactions():
 
 
 def audit_balances():
-    accounts = encrypt.decrypt_file('chain.csv')
+    accounts = encrypt.decrypt_file('AccountChain.csv')
     audited_balances = []
     population_balance = 0.0
     for account_id, account in accounts.items():
@@ -117,18 +117,18 @@ def view_transactions(account_num):
 
 
 def add_account(first_name, last_name, password):
-    accounts = encrypt.decrypt_file('chain.csv')
+    accounts = encrypt.decrypt_file('AccountChain.csv')
     number = str(len(accounts))
-    chain = open('chain.csv', 'a')
+    chain = open('AccountChain.csv', 'a')
     encrypted_list = encrypt.encrypt_list([number, first_name, last_name, password, '0.0'])
-    chain.write(f'{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]},{encrypted_list[4]}\n') #here
+    chain.write(f'{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]},{encrypted_list[4]}\n')
     chain.close()
     return number
 
 
 def log_transaction(sender_id, recipient_id, amount):
     read_key = open('key.txt', 'r')
-    previous_key = encrypt.decrypt_string(read_key.read()) # here
+    previous_key = encrypt.decrypt_string(read_key.read())
     date_time = str(datetime.datetime.now()).split(" ")
     date = date_time[0]
     time = date_time[1]
@@ -139,17 +139,30 @@ def log_transaction(sender_id, recipient_id, amount):
     transaction_writer = open('TransactionChain.csv', 'a')
     encrypted_list = encrypt.encrypt_list([number, sender_id, recipient_id, amount, date, time, new_key, previous_key])
     transaction_writer.write(f"{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]},"
-                             f"{encrypted_list[4]},{encrypted_list[5]},{encrypted_list[6]},{encrypted_list[7]}\n") # here
+                             f"{encrypted_list[4]},{encrypted_list[5]},{encrypted_list[6]},{encrypted_list[7]}\n")
     transaction_writer.close()
     write_key = open('key.txt', 'w')
-    write_key.write(encrypt.encrypt_string(new_key)) # here
+    write_key.write(encrypt.encrypt_string(new_key))
     write_key.close()
 
 
+def log_deposit(account_num, amount):
+    date_time = str(datetime.datetime.now()).split(" ")
+    date = date_time[0]
+    time = date_time[1]
+    deposits = encrypt.decrypt_file('DepositChain.csv')
+    number = str(len(deposits))
+    deposit_hash = f"{str(account_num)} {str(amount)} {str(date)} {str(time)}"
+    deposit_writer = open('DepositChain.csv', 'a')
+    encrypted_list = encrypt.encrypt_list([number, account_num, amount, deposit_hash])
+    deposit_writer.write(f"{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]}\n")
+    deposit_writer.close()
+
+
 def update_balance(account_info, account_num):
-    accounts = encrypt.decrypt_file('chain.csv')
+    accounts = encrypt.decrypt_file('AccountChain.csv')
     accounts[account_num] = [account_info[0], account_info[1], account_info[2], account_info[3]]
-    write_account = open('chain.csv', 'w')
+    write_account = open('AccountChain.csv', 'w')
     for account_id, account in accounts.items():
         encrypted_list = encrypt.encrypt_list([account_id, account[0], account[1], account[2], account[3]])
         write_account.writelines(f"{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]},"

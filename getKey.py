@@ -1,4 +1,4 @@
-from Wallet import encrypt
+import encrypt
 
 file = open('key.txt', 'r')
 encrypted_key = file.read()

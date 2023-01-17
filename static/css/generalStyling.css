@@ -26,3 +26,9 @@ body {
 .banner img {
   height: 100px;
 }
+
+.logo-button {
+  background: none;
+  border: none;
+  padding: 0;
+}

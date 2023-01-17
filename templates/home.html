@@ -34,10 +34,22 @@
     <img src="../static/images/audit.png" alt="Audit Chain" style="cursor: pointer;">
       <h2>Audit Chain</h2>
   </label>
+  <label for="depositFunds">
+    <input type="radio" id="depositFunds" name="tran_type" value="D" onchange="submitForm()">
+    <img src="../static/images/balances.png" alt="Add Funds" style="cursor: pointer;">
+      <h2>Deposit Funds</h2>
+  </label>
 </form>
 <script>
     function submitForm() {
         document.getElementById('trans').submit()
+    }
+</script>
+<div id="flash-message"></div>
+<script>
+    let flashMessage = "{{ get_flashed_messages()|safe }}"
+    if(flashMessage !== "[]") {
+        alert(flashMessage)
     }
 </script>
 </body>

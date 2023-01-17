@@ -8,8 +8,12 @@
 </head>
 <body>
 <div class="banner">
-  <div class="left">
-    <img src="../static/images/logo.png" alt="Logo">
+ <div class="left">
+    <form id="view" method="POST" action="/exitView">
+        <button type="submit" class="logo-button">
+            <img src="../static/images/logo.png" alt="Logo">
+        </button>
+    </form>
   </div>
   <div class="center">
       <h1>Bank Name - Trade Headquarters</h1>
@@ -31,5 +35,12 @@
     <br>
     <input type="submit" value="Submit">
 </form>
+<div id="flash-message"></div>
+<script>
+    let flashMessage = "{{ get_flashed_messages()|safe }}"
+    if(flashMessage !== "[]") {
+        alert(flashMessage)
+    }
+</script>
 </body>
 </html>
