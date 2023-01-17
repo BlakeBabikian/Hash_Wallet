@@ -1,7 +1,7 @@
 # Hash_Wallet
 Introduction:
 
-During an intro to cloud computing class, I was introduced to a couple cryptography concepts.  One of these was hashing, it was interesting to me because it was cool to think that no matter the data inputted it will always produce, a unique hash.  Additionally, no matter how many times you do this hash, if the data is the same the hash is the same.  I had heard a lot about blockchain so I figured I would start a project that could use the tools I had learned. 
+During an intro to cloud computing class, I was introduced to a couple cryptography concepts.  One of these was hashing, it was interesting to me because it was cool to think that no matter the data inputted it will always produce, a unique hash.  Additionally, no matter how many times you do this hash, if the data is the same the hash is the same.  I had heard a lot about blockchain so I figured I would start a project that could use the tools I had learned. With my study abroad semester approaching I thought this would be a great way for me to continue to utilize my skills, outside of a classroom enviornment. 
 
 The first step was to think of a practical application to apply this to, and sense money is a valuable thing, I figured I would make an atm/banking app.  I started out just making a python console app.  This is mostly because I did not know flask at the time, and front-end devolvement seemed daunting at the time.  The original app worked fine, but after a demo with several people, saying how cool the program was, I knew I needed to make a front end.
 
