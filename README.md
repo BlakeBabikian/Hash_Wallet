@@ -1,7 +1,7 @@
 # Hash_Wallet
 Introduction:
 
-During an intro to cloud computing class, I was introduced to a couple cryptography concepts.  One of these was hashing, it was interesting to me because it was cool to think that no matter the data inputted it will always produce, a unique hash.  Additionally, no matter how many times you do this hash, if the data is the same the hash is the same.  I had heard a lot about blockchain so I figured I would start a project that could use the tools I had learned. 
+During an intro to cloud computing class, I was introduced to a couple cryptography concepts.  One of these was hashing, it was interesting to me because it was cool to think that no matter the data inputted it will always produce, a unique hash.  Additionally, no matter how many times you do this hash, if the data is the same the hash is the same.  I had heard a lot about blockchain so I figured I would start a project that could use the tools I had learned. With my study abroad semester approaching I thought this would be a great way for me to continue to utilize my skills, outside of a classroom enviornment. 
 
 The first step was to think of a practical application to apply this to, and sense money is a valuable thing, I figured I would make an atm/banking app.  I started out just making a python console app.  This is mostly because I did not know flask at the time, and front-end devolvement seemed daunting at the time.  The original app worked fine, but after a demo with several people, saying how cool the program was, I knew I needed to make a front end.
 
@@ -19,9 +19,10 @@ encrypt.py – My encryptor
 
 14 HTML files
 
-2 CSVs 1 txt
-Chain.csv – Accounts and balances
+3 CSVs 1 txt
+AccountChain.csv – Accounts and balances
 TransactionChain.csv – A record of all the transactions
+DepositChain.csv - a record of all deposits
 Key.txt – Most recent key
 
 My logic behind my data security is:
@@ -38,24 +39,17 @@ This again forces a lot of data to be changed down the line in order for my audi
 
 Demo:
 
-To try out this program go to the app.py file, line 163 hit play.  And click the url that pops up.
+To try out this program go to the app.py file, line 203 hit play.  And click the url that pops up.
 
-Sign into this 
+create your account and sign in.
 
-Central
-Bank
-I<3TheFed
-Key from getKey.py
-
-Once in feel free to explore, including making yourself an account, and then eventually signing into it. 
-
-Warning I have no very little input control so please be careful, especially with the transaction one, the amounts automatically get forced into type float!!
+Warning I have  very little input control so please be careful!
 
 Next Steps:
 
-I have a note “bulletproof” this includes input control, invalid sign in attempts etc.  
 I need a better way to scale up the auditing, I feel like I can’t think of a good way, please any suggestions
-As of now, the only way to add an account is through the central bank account, this is because I wanted a way to check money in the system.  I thought maybe have an add account button on the sign in page. And add an add funds button to the home page. But then the whole money thing comes up, idk if it would worth going to that’s step as this project is ultimately for fun.
+I want to also add a deposit audit, ensure that peoples balances deposits plus trades, or total deposits = money in the system 
+	the reason I have not done this is because i added deposits after I had data, so most user have money without deposits, I just need to restart the 	data, but for the stage i am at now, I'll make that change once I have a couple more reasons to.  Note i've had to reset data several times just in 	because of changes i made before
 
 I’m sure there is more Ill come up with, but let me know what y’all think, use notes.txt.
 ![image](https://user-images.githubusercontent.com/105388898/210686727-e0f13c3b-833c-4e79-8b32-f167d8926bfb.png)
