@@ -1,1 +1,1 @@
-web: /Users/blakebabikianbentley/venv/bin/python -m flask run
+web: /app/.heroku/python/bin/python -m flask run
