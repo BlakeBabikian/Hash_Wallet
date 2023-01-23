@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template, flash, session, redirect, url_for
 import backEnd
 import encrypt
+import os
 
 app = Flask(__name__)
 app.secret_key = "BentleyBondBait"
+port = int(os.environ.get('PORT', 5000))
 
 global user_id_num, user_first_name, user_last_name, user_password, balance,\
     recip_id_num, recip_first_name, recip_last_name
@@ -201,4 +203,4 @@ def new_user_request():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4225)
+    app.run(host='0.0.0.0', port=port)
