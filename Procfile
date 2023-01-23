@@ -1,1 +1,1 @@
-web: /app/.heroku/python/bin/python -m flask run
+web: python app.py
