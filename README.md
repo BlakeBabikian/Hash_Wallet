@@ -47,6 +47,8 @@ Warning I have  very little input control so please be careful!
 
 Next Steps:
 
+My next step is to make the data behind this application be a SQLite Database using SQL Alchemy to replace all of my CSV files.
+
 I need a better way to scale up the auditing, I feel like I can’t think of a good way, please any suggestions
 I want to also add a deposit audit, ensure that peoples balances deposits plus trades, or total deposits = money in the system 
 	the reason I have not done this is because i added deposits after I had data, so most user have money without deposits, I just need to restart the 	data, but for the stage i am at now, I'll make that change once I have a couple more reasons to.  Note i've had to reset data several times just in 	because of changes i made before
