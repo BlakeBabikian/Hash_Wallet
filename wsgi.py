@@ -182,9 +182,6 @@ def audit_doc_type():
 
 @app.route('/home_page', methods=['POST', 'GET'])
 def go_home():
-    # first_name = request.args.get('fName')
-    # last_name = request.args.get('lName')
-    # session['balance'] = request.args.get('balance')
     return render_template('home.html', fName=session['user_first_name'], lName=session['user_last_name'],
                            balance=session['balance'])
 
