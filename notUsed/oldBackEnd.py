@@ -3,17 +3,16 @@ import encrypt
 import hashlib
 import datetime
 
+money_supply = 1000000000000.0
 
-money_supply = 1000000000000
 
-
-def load_account(account_num):
+def load_account(account_num):  # not needed
     accounts = encrypt.decrypt_file('AccountChain.csv')
     account = accounts.get(account_num)
     return account
 
 
-def load_transactions(account_num):
+def load_transactions(account_num):  # not needed
     transactions = encrypt.decrypt_file('TransactionChain.csv')
     account_transactions = []
     for link in transactions.values():
@@ -22,13 +21,13 @@ def load_transactions(account_num):
     return account_transactions
 
 
-def audit_transactions():
+def audit_transactions():  # read rows
     transactions = encrypt.decrypt_file('TransactionChain.csv')
     audited_transactions = []
     keys = list(transactions.keys())
-    for i in range(len(keys)-1):
+    for i in range(len(keys) - 1):
         previous_trans = transactions.get(keys[i])
-        next_trans = transactions.get(keys[i+1])
+        next_trans = transactions.get(keys[i + 1])
         hash_from_data = hashlib.sha256(f"{previous_trans[0]} {previous_trans[1]} {previous_trans[2]} "
                                         f"{previous_trans[3]} {previous_trans[4]} {previous_trans[6]}"
                                         .encode('utf-8')).hexdigest()
@@ -39,7 +38,7 @@ def audit_transactions():
     return audited_transactions
 
 
-def audit_balances():
+def audit_balances():  # read rows
     accounts = encrypt.decrypt_file('AccountChain.csv')
     audited_balances = []
     population_balance = 0.0
@@ -50,20 +49,23 @@ def audit_balances():
             taken_from_system = (chain_balance * -1)
             true_balance = test_balance + taken_from_system
             if true_balance == float(money_supply):
-                audited_balances += [f"All money is accounted for, True money in circulation = {chain_balance * -1:13,.2f}"]
+                audited_balances += [
+                    f"All money is accounted for, True money in circulation = {chain_balance * -1:13,.2f}"]
             elif true_balance >= float(money_supply):
                 audited_balances += [f"Money seems to have entered the system"]
             else:
                 audited_balances += [f"Money seems to have left the system"]
         elif test_balance == chain_balance:
-            audited_balances += [f"Checks out! Balance: ${test_balance:13,.2f}   Chain Balance: ${chain_balance:13,.2f}"]
+            audited_balances += [
+                f"Checks out! Balance: ${test_balance:13,.2f}   Chain Balance: ${chain_balance:13,.2f}"]
             population_balance += chain_balance
         else:
-            audited_balances += [f"Doesn't check out! Balance: ${test_balance:13,.2f}   Chain Balance: ${chain_balance:13,.2f}"]
+            audited_balances += [
+                f"Doesn't check out! Balance: ${test_balance:13,.2f}   Chain Balance: ${chain_balance:13,.2f}"]
     return audited_balances
 
 
-def balance_through_chain(account_num):
+def balance_through_chain(account_num):  # get transactions
     transactions = encrypt.decrypt_file('TransactionChain.csv')
     chain_balance = 0.0
     for link in transactions.values():
@@ -74,7 +76,7 @@ def balance_through_chain(account_num):
     return chain_balance
 
 
-def sign_in(account_num, account_f_name, account_l_name, account_password):
+def sign_in(account_num, account_f_name, account_l_name, account_password):  # get account
     account_info = load_account(account_num)
     if account_info[0] == account_f_name and account_info[1] == account_l_name and account_info[2] == account_password:
         return True, account_info
@@ -82,7 +84,7 @@ def sign_in(account_num, account_f_name, account_l_name, account_password):
         return False, None
 
 
-def verify_recipient(recipient_num, recipient_f_name, recipient_l_name):
+def verify_recipient(recipient_num, recipient_f_name, recipient_l_name): # get account
     account_info = load_account(recipient_num)
     if account_info[0] == recipient_f_name and account_info[1] == recipient_l_name:
         return True
@@ -90,7 +92,7 @@ def verify_recipient(recipient_num, recipient_f_name, recipient_l_name):
         return False
 
 
-def transaction(account_num, amount, transaction_type):
+def transaction(account_num, amount, transaction_type):  # get account & change balance
     account_info = load_account(account_num)
     balance = float(account_info[3])
     if transaction_type == "Debit":
@@ -101,7 +103,7 @@ def transaction(account_num, amount, transaction_type):
     update_balance(account_info, account_num)
 
 
-def view_transactions(account_num):
+def view_transactions(account_num):  # get transactions
     transactions = load_transactions(account_num)
     dates, times, other_accounts, amounts = [], [], [], []
     for i in transactions:
@@ -116,17 +118,18 @@ def view_transactions(account_num):
     return dates, times, other_accounts, amounts
 
 
-def add_account(first_name, last_name, password):
+def add_account(first_name, last_name, password):  # add row
     accounts = encrypt.decrypt_file('AccountChain.csv')
     number = str(len(accounts))
     chain = open('AccountChain.csv', 'a')
     encrypted_list = encrypt.encrypt_list([number, first_name, last_name, password, '0.0'])
-    chain.write(f'{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]},{encrypted_list[4]}\n')
+    chain.write(
+        f'{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]},{encrypted_list[4]}\n')
     chain.close()
     return number
 
 
-def log_transaction(sender_id, recipient_id, amount):
+def log_transaction(sender_id, recipient_id, amount):  # add row
     read_key = open('key.txt', 'r')
     previous_key = encrypt.decrypt_string(read_key.read())
     date_time = str(datetime.datetime.now()).split(" ")
@@ -146,7 +149,7 @@ def log_transaction(sender_id, recipient_id, amount):
     write_key.close()
 
 
-def log_deposit(account_num, amount):
+def log_deposit(account_num, amount):  # add row
     date_time = str(datetime.datetime.now()).split(" ")
     date = date_time[0]
     time = date_time[1]
@@ -159,14 +162,14 @@ def log_deposit(account_num, amount):
     deposit_writer.close()
 
 
-def update_balance(account_info, account_num):
+def update_balance(account_info, account_num):  # not sure is needed
     accounts = encrypt.decrypt_file('AccountChain.csv')
     accounts[account_num] = [account_info[0], account_info[1], account_info[2], account_info[3]]
     write_account = open('AccountChain.csv', 'w')
     for account_id, account in accounts.items():
         encrypted_list = encrypt.encrypt_list([account_id, account[0], account[1], account[2], account[3]])
         write_account.writelines(f"{encrypted_list[0]},{encrypted_list[1]},{encrypted_list[2]},{encrypted_list[3]},"
-                                 f"{encrypted_list[4]}\n") # here
+                                 f"{encrypted_list[4]}\n")  # here
 
 
 """add_account("Blake","Babikian","4Amigos4")
@@ -174,7 +177,6 @@ def update_balance(account_info, account_num):
 transaction("0", "100.0", "Credit")
 transaction("1", "100.0", "Debit")
 log_transaction("0","1","100.0")"""
-
 
 """add_account("Jack","McDiarmid","444")
 
