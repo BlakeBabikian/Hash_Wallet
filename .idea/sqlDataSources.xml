@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="cbff907d-3ef4-420a-859c-ed8ff6034773" name="employees Mapping">
+      <data-sources db="a451e619-4405-4ed1-8dd2-9e65593c5cd5" />
+    </mapping>
+    <mapping uuid="dd55a0e5-7871-43af-9d5a-0ff944709c47" name="wallet_data Mapping">
+      <data-sources db="1483bf84-0e50-4fcc-8c20-51641e5ddb18" ddl="91bf9722-6435-46c5-a50e-da3bfee89047" />
+      <scope>
+        <node kind="database" negative="1" />
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="91bf9722-6435-46c5-a50e-da3bfee89047" />
+          <option name="name" value="DDL data source" />
+          <option name="dbmsName" value="POSTGRES" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
