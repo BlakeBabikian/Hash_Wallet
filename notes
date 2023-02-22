@@ -2,12 +2,14 @@ Before next push:
     reset data -> add back accounts
     deposit auditing
     decrypt formatting
+    trim encrypt.py
+    learn github
+    learn postgres
 
 
 
 Not Critical:
 figure out the format of the audit page what needs to be there - scaling up.
-time Zones - seems too annoying to worry about
 color changing auditing - not sure if it is needed, better off just dealing with invalid
 
 
