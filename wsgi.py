@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, flash, session, redirect, url
 import backEnd
 import database
 import encrypt
-from app import app
+from app import app, port
 
 
 @app.route('/')
