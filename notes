@@ -1,10 +1,7 @@
 Before next push:
-    reset data -> add back accounts
-    deposit auditing
-    decrypt formatting
-    trim encrypt.py
-    learn github
-    learn postgres
+    1. flash trade complete
+    2. flash deposit complete
+
 
 
 
@@ -15,4 +12,3 @@ color changing auditing - not sure if it is needed, better off just dealing with
 
 admin:
 bank name
-what currency

@@ -7,3 +7,7 @@ td, th {
     padding-right: 15px;
     padding-bottom: 10px;
   }
+.view_content {
+    margin: auto;
+    text-align: center;
+}

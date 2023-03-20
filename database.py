@@ -1,4 +1,5 @@
-from sqlalchemy import create_engine, Table, MetaData, update, select, desc, or_, Column, Integer, Sequence
+from sqlalchemy import create_engine, Table, MetaData, update, select, desc, or_, Column, Integer, \
+    Sequence, asc
 from sqlalchemy.orm import sessionmaker
 import os
 import encrypt
@@ -68,3 +69,9 @@ def get_user_ids():
     table = load_table('AccountChain')
     results = [result[0] for result in session.query(table.c['User_ID']).all()]
     return results
+
+
+def get_total_deposits():
+    table = load_table('DepositChain')
+    result = sum(float(encrypt.decrypt_string(deposit[0])) for deposit in session.query(table.c['Amount']).all())
+    return result
