@@ -1,6 +1,8 @@
 from sqlalchemy import create_engine, Table, MetaData, update, select, desc, or_, Column, Integer, \
     Sequence, asc
 from sqlalchemy.orm import sessionmaker
+import psycopg2
+from sqlalchemy.dialects.postgresql import psycopg2
 import os
 import encrypt
 
