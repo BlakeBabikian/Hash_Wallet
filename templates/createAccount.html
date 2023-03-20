@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create Account</title>
     <link rel="stylesheet" href="../static/css/generalStyling.css">
     <link rel="stylesheet" href="../static/css/createAccountCSS.css">
 </head>
@@ -12,23 +12,23 @@
     <img src="../static/images/logo.png" alt="Logo">
   </div>
   <div class="center">
-      <h1>Bank Name - Create Account</h1>
+      <h1>Block Link Bank - Create Account</h1>
   </div>
   <div class="right">
   </div>
 </div>
 <br>
-<form action="/createAccount" method="POST">
-    <label>Enter your first name:</label>
+<form action="/createAccount" method="POST" class="create-account-form">
+    <label for="new_user_first_name">Enter your first name:</label>
     <input type="text" id="new_user_first_name" name="new_user_first_name" required>
     <br>
-    <label>Enter your last name:</label>
+    <label for="new_user_last_name">Enter your last name:</label>
     <input type="text" id="new_user_last_name" name="new_user_last_name" required>
     <br>
-    <label>Enter your password:</label>
+    <label for="new_user_password">Enter your password:</label>
     <input type="password" id="new_user_password" name="new_user_password" required>
     <br>
-    <label>Confirm your password:</label>
+    <label for="new_user_confirm_password">Confirm your password:</label>
     <input type="password" id="new_user_confirm_password" name="new_user_confirm_password" required>
     <br>
     <input type="submit" value="Submit">

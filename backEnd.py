@@ -1,5 +1,4 @@
 import encrypt
-import encrypt
 import hashlib
 import datetime
 import database
@@ -23,25 +22,28 @@ def audit_transactions():
                                         f"{previous_trans[4]} {previous_trans[5]} {previous_trans[7]}"
                                         .encode('utf-8')).hexdigest()
         if hash_from_data == previous_trans[6] and hash_from_data == next_trans[7]:
-            audited_transactions += [f"Valid {previous_trans[0]} {hash_from_data[0:8]} {next_trans[7][0:8]}"]
+            audited_transactions += [f"Valid {previous_trans[0]} {hash_from_data[2:9]} {next_trans[7][2:9]}"]
         else:
-            audited_transactions += [f"Invalid {previous_trans[0]} {hash_from_data[0:8]} {next_trans[7][0:8]}"]
+            audited_transactions = [f"Invalid {previous_trans[0]} {hash_from_data[2:9]} {next_trans[7][2:9]}"]
+            break
     return audited_transactions
 
 
 def audit_balances():
-    accounts = database.get_user_ids()
+    accounts = sorted(database.get_user_ids())
     audited_balances = []
     population_balance = 0.0
     for account in accounts:
         test_balance = float(encrypt.decrypt_string(database.get_account(account)[-1]))
         chain_balance = float(balance_through_chain(account))
-        if account == 0:
+        if account == 1:
+            total_deposits = database.get_total_deposits()
             taken_from_system = (chain_balance * -1)
             true_balance = test_balance + taken_from_system
-            if true_balance == float(money_supply):
+            if true_balance == float(money_supply) and total_deposits == taken_from_system:
                 audited_balances += [
-                    f"All money is accounted for, True money in circulation = {chain_balance * -1:13,.2f}"]
+                    f"All money is accounted for, True money in circulation = {taken_from_system:13,.2f}, deposits = "
+                    f"{total_deposits:13,.2f}."]
             elif true_balance >= float(money_supply):
                 audited_balances += [f"Money seems to have entered the system"]
             else:

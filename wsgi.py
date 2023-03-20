@@ -50,12 +50,13 @@ def home_page():
 @app.route('/trade', methods=['POST'])
 def trade_request():  # add flash saying the trade went through with details
     session['recip_id_num'] = request.form['recip_id_num']
-    recip_first_name = request.form['recip_first_name']
-    recip_last_name = request.form['recip_last_name']
-    if backEnd.verify_recipient(session['recip_id_num'], recip_first_name, recip_last_name):
+    session['recip_first_name'] = request.form['recip_first_name']
+    session['recip_last_name'] = request.form['recip_last_name']
+    if backEnd.verify_recipient(session['recip_id_num'], session['recip_first_name'], session['recip_last_name']):
         return render_template('confirmTrade.html', balance=f"{float(session['balance']):13,.2f}")
     else:
-        flash(f"No user found with the information {recip_id_num} {recip_first_name} {recip_last_name}")
+        flash(f"No user found with the information {session['recip_id_num']} {session['recip_first_name']} "
+              f"{session['recip_last_name']}")
         return render_template('trade.html', fName=session['user_first_name'], lName=session['user_last_name'],
                                balance=f"{float(session['balance']):13,.2f}")
 
@@ -74,6 +75,8 @@ def confirm_trade():
         test, data = backEnd.sign_in(session['user_id_num'], session['user_first_name'], session['user_last_name'],
                                      session['user_password'])
         session['balance'] = data[3]
+        message = f"${amount:0,.2f} sent to {session['recip_first_name']} {session['recip_last_name']}"
+        flash(message)
         return redirect(url_for('go_home', fName=session['user_first_name'], lName=session['user_last_name'],
                                 balance=f"{float(session['balance']):13,.2f}"))
     else:
@@ -94,7 +97,7 @@ def confirm_central_bank():
     if user_key == previous_key[0:8]:
         return render_template('centralBankHome.html')
     else:
-        flash("Incorrect Key, please try again!")
+        flash("Incorrect key, please try again!")
         return render_template('confirmCentralBank.html')
 
 
@@ -112,7 +115,7 @@ def central_transaction():
 
 
 @app.route('/docType', methods=['POST'])
-def doc_type():  # rework - database.read_rows(doc_request) to a for loop - decrypting [1:] adding [0] then added
+def doc_type():
     doc_request = request.form['doc_type']
     data = ["Error"]
     display_data = []
@@ -128,7 +131,7 @@ def doc_type():  # rework - database.read_rows(doc_request) to a for loop - decr
     for i in data:
         row_id = i[0]
         row_data = encrypt.decrypt_list(i[1:])
-        display_data += [row_id] + row_data
+        display_data += [[row_id] + row_data]
     return render_template('showDecryption.html', output=display_data)
 
 
@@ -156,8 +159,10 @@ def add_funds():
     backEnd.transaction(session['user_id_num'], amount, "Debit")
     backEnd.log_transaction("1", session['user_id_num'], amount)
     backEnd.log_deposit(session['user_id_num'], amount)
-    account_info = database.get_account(session['user_id_num'])  # here
+    account_info = database.get_account(session['user_id_num'])
     session['balance'] = float(encrypt.decrypt_string(account_info[-1]))
+    message = f"${amount:0,.2f} deposited to your account"
+    flash(message)
     return redirect(url_for('go_home', fName=session['user_first_name'], lName=session['user_last_name'],
                             balance=session['balance']))
 

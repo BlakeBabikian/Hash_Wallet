@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bank Home</title>
     <link rel="stylesheet" href="../static/css/generalStyling.css">
     <link rel="stylesheet" href="../static/css/homeCSS.css">
 </head>
@@ -12,10 +12,11 @@
     <img src="../static/images/logo.png" alt="Logo">
   </div>
   <div class="center">
-      <h1>Bank Name</h1>
+      <h1>Block Link Bank</h1>
   </div>
   <div class="right">
-    <p>Welcome {{ fName }} {{ lName }} Balance: ${{ balance }}</p>
+    <p>{{ fName }} {{ lName }}</p>
+      <p>Balance: ${{ balance }}</p>
   </div>
 </div>
 <form id="trans" method="POST" action="/transaction">
