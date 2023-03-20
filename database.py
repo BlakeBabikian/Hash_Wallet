@@ -4,7 +4,8 @@ from sqlalchemy.orm import sessionmaker
 import os
 import encrypt
 
-engine = create_engine('postgresql://localhost:5432/postgres')
+engine = create_engine('postgres://lucscyvjwbvpgw:3e0a28d4336c90cf4d252a866f54d3f58338c702760d76794373a733ed5869b0@ec2-'
+                       '34-197-91-131.compute-1.amazonaws.com:5432/decjs0l54m2es5')
 Session = sessionmaker(bind=engine)
 session = Session()
 metadata = MetaData()
