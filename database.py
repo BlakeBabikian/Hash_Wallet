@@ -6,8 +6,8 @@ from sqlalchemy.dialects.postgresql import psycopg2
 import os
 import encrypt
 
-engine = create_engine('postgresql://lucscyvjwbvpgw:3e0a28d4336c90cf4d252a866f54d3f58338c702760d76794373a733ed5869b0@ec'
-                       '2-34-197-91-131.compute-1.amazonaws.com:5432/decjs0l54m2es5')
+engine = create_engine('postgres://ohxbpooneyznrg:3971f8b9f0d67ac14629551339d9ba793ad8da29be40656290a923577b204b47@ec2-'
+                       '23-20-211-19.compute-1.amazonaws.com:5432/dcj5ar95ejloos')
 Session = sessionmaker(bind=engine)
 session = Session()
 metadata = MetaData()
