@@ -21,7 +21,7 @@ def login_request():
         session['user_first_name'] = data[0]
         session['user_last_name'] = data[1]
         session['user_password'] = data[2]
-        session['balance'] = data[3]
+        session['balance'] = data[3] 
         session['user_id_num'] = user_id_num
         if session['user_id_num'] == "1":
             return render_template('confirmCentralBank.html')
